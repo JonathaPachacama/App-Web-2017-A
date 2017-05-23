@@ -2,3 +2,10 @@
 *.iml
 .idea/modules.xml
 .idea/vcs.xml
+.idea/inspectionProfiles/profiles_settings.xml
+
+HTML/.idea/misc.xml
+
+HTML/.idea/modules.xml
+
+HTML/.idea/workspace.xml
