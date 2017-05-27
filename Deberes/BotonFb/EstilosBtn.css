@@ -1,0 +1,144 @@
+
+body{
+    background-color: #3b5998;
+    text-align: center;
+    color: #ffffff;
+}
+h1{
+    color: #ffffff;
+    background-color: #3b5998;
+    text-align: center;
+}
+button {
+    background-color: white;
+    border-radius: 50px 50px 50px 50px;
+    padding-top: 3em;
+    padding-left: 3em;
+    padding-right: 1em;
+    background-repeat: no-repeat;
+    height: 5em;
+    width: 5em;
+    background-position: center;
+    webkit-animation-name: animacionBoton; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: animacionBoton;
+    animation-duration: 4s;
+
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes animacionBoton {
+    0% {
+        height: 5em;
+        width: 5em;
+    }
+    50% {
+        height: 6em;
+        width: 6em;
+    }
+    100% {
+        height: 5em;
+        width: 5em;
+    }
+}
+
+/* Standard syntax */
+@keyframes animacionBoton {
+    0% {
+        height: 5em;
+        width: 5em;
+    }
+    50% {
+        height: 6em;
+        width: 6em;
+    }
+    100% {
+        height: 5em;
+        width: 5em;
+    }
+}
+
+#meGusta {
+    background-image: url("meGusta.png");
+}
+
+#meEncanta {
+    background-image: url("meEncanta.PNG");
+}
+
+#gracias {
+    background-image: url("Gracias.png");
+}
+
+#meDivierte {
+    background-image: url("meDivierte.PNG");
+}
+
+#meAsombra {
+    background-image: url("meAsombra.png");
+}
+
+#meEntristece {
+    background-image: url("meEntristece.PNG");
+}
+
+#meEnoja {
+    background-image: url("meEnoja.PNG");
+}
+
+#snackbar {
+    visibility: hidden;
+    min-width: 20px;
+    margin-left: -70px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 20px 20px 20px 20px;
+    padding: 10px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    font-size: 17px;
+}
+
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: aparecer 0.5s, desaparecer 0.5s 2.5s;
+    animation: aparecer 0.5s, desaparecer 0.5s 2.5s;
+}
+
+@-webkit-keyframes aparecer {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes desaparecer {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes desaparecer {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}

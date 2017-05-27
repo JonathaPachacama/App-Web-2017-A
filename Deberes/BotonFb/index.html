@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Facebook</title>
+    <link rel="icon"  href="favicon.ico">
+    <link rel="stylesheet" href="EstilosBtn.css"/>
+</head>
+<body>
+<h1>Deber Boton Facebook</h1>
+
+<h2>Jonathan Pachacama</h2>
+
+<button id="meGusta" onclick="reaccion()"></button>
+<button id="meEncanta" onclick="reaccion()"></button>
+<button id="gracias" onclick="reaccion()"></button>
+<button id="meDivierte" onclick="reaccion()"></button>
+<button id="meAsombra" onclick="reaccion()"></button>
+<button id="meEntristece" onclick="reaccion()"></button>
+<button id="meEnoja" onclick="reaccion()"></button>
+
+<div id="snackbar" >Reaccion al boton!</div>
+<script>
+    function reaccion() {
+        var x = document.getElementById("snackbar");
+        x.className = "show";
+        setTimeout(function () {
+            x.className = x.className.replace("show", "");
+        }, 3000);
+    }
+</script>
+
+</body>
+</html>
