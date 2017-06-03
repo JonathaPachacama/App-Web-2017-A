@@ -1,32 +1,58 @@
 // nombreVariable:tipoVariable
-var numero = 2;
-// numero = "Adrian"; //No se puede guardar tipos de dato string en numbers
-+numero;
-18;
-var verdad = true;
-// verdad = 0;// No podemos igualar a un elemento que no sea un booleano
-verdad = null;
+/*
+    let numero:number = 2;
+
+    // numero = "Adrian"; //No se puede guardar tipos de dato string en numbers
+        +numero = 18;
+
+    let verdad:boolean = true;
+
+    // verdad = 0;// No podemos igualar a un elemento que no sea un booleano
+
+            verdad = null;
+
 verdad = undefined;
-verdad = false;
-var nombre = "Adrian";
-nombre = "Yo no soy " + verdad;
-var arregloNumeros1 = [1, 2];
-var arregloNumeros2 = [1, 2];
-var adrian = {
-    nombre: "Adrian",
-    apellido: "Eguez",
-    id: 21
+
+    verdad = false;
+
+    let nombre:string = "Adrian";
+
+    nombre = `Yo no soy ${verdad}`;
+
+    let arregloNumeros1:number[] = [1,2];
+
+    let arregloNumeros2:Array <number> = [1,2];
+
+    interface UsuarioInt{
+        nombre:string,
+            apellido:string,
+            nota?:number,
+            id:number
+    }
+let adrian:UsuarioInt = {
+        nombre:"Adrian",
+        apellido:"Eguez",
+        id:21
 };
-var juego = {};
+
+
+        var juego = {};
 juego = 2;
 juego = "string";
-var juego = 2;
+
+    let juego = 2;
 //juego = "Nombre"; //Error
-//juego = {}; // Error
-var juego = 2;
+    //juego = {}; // Error
+
+            let juego:any = 2;
 juego = "Nombre";
 juego = {};
-var amigo = "Amigo";
-var numero = 2;
-//numero = 25;
-//amigo = "Referendum"; 
+
+    const amigo = "Amigo";
+const numero = 2;
+
+    //numero = 25;
+
+            //amigo = "Referendum";
+
+            */ 

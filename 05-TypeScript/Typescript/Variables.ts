@@ -1,5 +1,11 @@
 // nombreVariable:tipoVariable
 
+
+
+
+
+
+/*
     let numero:number = 2;
 
     // numero = "Adrian"; //No se puede guardar tipos de dato string en numbers
@@ -54,3 +60,5 @@ const numero = 2;
     //numero = 25;
 
             //amigo = "Referendum";
+
+            */
