@@ -4,7 +4,7 @@
 const express = require('express')
 const app = express()
 const fs = require('fs');
-app.use(express.static('public'));
+
 //ejemplo
 app.get('/bienvenido', function (req, res) {
     res.send('Hello World!')
@@ -20,9 +20,7 @@ app.post('/informacion', function (req, res) {
         });
 })
 //Ruta Facultad de Sistemas
-app.get('/facultaddesistemas', function (req, res) {
-    res.send('Facultad de Sistemas')
-})
+app.get('/facultaddesistemas', app.use(express.static('public')));
 
 //Ruta Cabeceras
 app.post('/cabeceras', function (req, res) {
