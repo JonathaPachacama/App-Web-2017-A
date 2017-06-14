@@ -7,7 +7,6 @@ const fs = require('fs');
 app.use(express.static('public'));
 //Ruta Informacion
 app.post('/informacion', function (req, res) {
-    res.append('insertar','valor')
     fs.readFile('Informacion.txt', 'utf8',
         function(err, data) {
             if (err) throw err;
@@ -17,11 +16,17 @@ app.post('/informacion', function (req, res) {
 })
 //Ruta Facultad de Sistemas
 app.get('/facultaddesistemas', function (req, res) {
+    res.send('Facultad de Sistemas')
 })
 
 //Ruta Cabeceras
 app.post('/cabeceras', function (req, res) {
-    res.append('nombre-cabecera','Valor de la cabecera');
+    res.append('fecha',new Date()); //cabecera 1
+    res.append('Metodo',req.method); //cabecera 2
+    res.append('Direccion-ip',req.ip); //cabecera 3
+    res.append('url-original', req.originalUrl); //cabecera 4
+    res.append('protocolo',req.protocol); //cabecera 5
+    res.send();
 })
 app.listen(8080, function () {
     console.log('Example app listening on port 8080!')
