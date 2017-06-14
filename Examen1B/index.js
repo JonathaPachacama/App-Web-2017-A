@@ -5,6 +5,11 @@ const express = require('express')
 const app = express()
 const fs = require('fs');
 app.use(express.static('public'));
+//ejemplo
+app.get('/bienvenido', function (req, res) {
+    res.send('Hello World!')
+})
+
 //Ruta Informacion
 app.post('/informacion', function (req, res) {
     fs.readFile('Informacion.txt', 'utf8',
@@ -27,6 +32,19 @@ app.post('/cabeceras', function (req, res) {
     res.append('url-original', req.originalUrl); //cabecera 4
     res.append('protocolo',req.protocol); //cabecera 5
     res.send();
+})
+
+//Ruta SetCookies
+
+app.get('/setcookie', function (req, res) {
+    res.cookie('pachacama', 24)
+    res.send('Cookie seteada')
+})
+
+//Ruta ClearCookie
+app.get('/clearcookie', function (req, res) {
+    res.clearCookie("pachacama")
+    res.send('Cookie eliminada')
 })
 app.listen(8080, function () {
     console.log('Example app listening on port 8080!')
