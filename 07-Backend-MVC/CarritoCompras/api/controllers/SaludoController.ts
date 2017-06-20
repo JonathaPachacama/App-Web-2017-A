@@ -13,13 +13,14 @@ module.exports = {
     //.error
     //.silly
     sails.log.info(req.method);
- 
-    req.method; //Metodo : GET POST PUT DELETE
-
+    if(req.method=="POST"){
+      return res.json({saludo:"hola"})
+    }else{
+      return res.send("Error en metodo")
+    }
+     //Metodo : GET POST PUT DELETE
     //Si no ponen el metodo devolver
-        //return res.send("Error en metodo")
     //Metodo:perteneces al req.method;
-    return res.json({saludo:"hola"})
     // return res.send("Error en metodo")
   },
 
@@ -28,6 +29,10 @@ module.exports = {
   bienvenido:(req,res)=>{
 
     //PUT
-    return res.json("hola")
+    if(req.method=="PUT"){
+      return res.json("hola")
+    }else{
+      return res.send("Error en metodo")
+    }
   },
 };
