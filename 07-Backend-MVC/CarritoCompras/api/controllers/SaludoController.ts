@@ -4,11 +4,9 @@
 declare var module;
 declare var sails;
 
-  //En typescript pdemos usar arrow fuction
+  //En typescript podemos usar arrow fuction
 module.exports = {
-  //response.json({saluso:"hola"})
   welcome:(req,res)=>{
-
     //POST
     //.error
     //.silly
@@ -24,15 +22,14 @@ module.exports = {
     // return res.send("Error en metodo")
   },
 
-
   //otra ruta que hace lo mismo pero resumen res y req y evia texto plano
   bienvenido:(req,res)=>{
-
     //PUT
+    sails.log.info(req.method);
     if(req.method=="PUT"){
       return res.json("hola")
     }else{
-      return res.send("Error en metodo")
+      return res.send("Error en metodo (ruta bienvenida)")
     }
   },
 };
