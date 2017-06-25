@@ -4,12 +4,9 @@
 declare var module;
 declare var sails;
 //////////////////////////////// Deber
-
 module.exports = {
   Ejemplo:(req,res)=>{
-
     //res.cookie()
-
     res.cookie('pachacama', 24, { maxAge: 900000, httpOnly: true });//con limite de tiempo
     res.cookie('cart', { items: [1,2,3] }, { maxAge: 900000 }); //pasando un objeto
     res.cookie('nombre', 'pool', { signed: true });//firmada
@@ -26,5 +23,13 @@ module.exports = {
     });
     return res.send('Cookie seteada');
 
+
+
+  },
+
+  Ejemplo2:(req,res)=>{
+    //res.clearCookie()
+    res.clearCookie('pachacama', { path: '/' });
+    return res.send('Cookie eliminada');
   },
 };

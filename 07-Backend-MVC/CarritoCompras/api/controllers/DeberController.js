@@ -16,4 +16,9 @@ module.exports = {
         });
         return res.send('Cookie seteada');
     },
+    Ejemplo2: function (req, res) {
+        //res.clearCookie()
+        res.clearCookie('pachacama', { path: '/' });
+        return res.send('Cookie eliminada');
+    },
 };
