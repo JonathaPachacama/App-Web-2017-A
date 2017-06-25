@@ -13,7 +13,7 @@ module.exports = {
 
     res.cookie('name', 'tobi', {
       domain: '.example.com',
-      path: '/Ejemplo',
+      path: '/',
       secure: true
     });
 
@@ -30,6 +30,10 @@ module.exports = {
   Ejemplo2:(req,res)=>{
     //res.clearCookie()
     res.clearCookie('pachacama', { path: '/' });
-    return res.send('Cookie eliminada');
+    res.clearCookie('cart', { path: '/' });
+    res.clearCookie('nombre', { path: '/' });
+    res.clearCookie('name', {path: '/'});
+    res.clearCookie('rememberme', { path: '/' });
+    return res.send('Cookies eliminadas');
   },
 };

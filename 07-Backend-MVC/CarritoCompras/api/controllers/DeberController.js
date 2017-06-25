@@ -7,7 +7,7 @@ module.exports = {
         res.cookie('nombre', 'pool', { signed: true }); //firmada
         res.cookie('name', 'tobi', {
             domain: '.example.com',
-            path: '/Ejemplo',
+            path: '/',
             secure: true
         });
         res.cookie('rememberme', '1', {
@@ -19,6 +19,10 @@ module.exports = {
     Ejemplo2: function (req, res) {
         //res.clearCookie()
         res.clearCookie('pachacama', { path: '/' });
-        return res.send('Cookie eliminada');
+        res.clearCookie('cart', { path: '/' });
+        res.clearCookie('nombre', { path: '/' });
+        res.clearCookie('name', { path: '/' });
+        res.clearCookie('rememberme', { path: '/' });
+        return res.send('Cookies eliminadas');
     },
 };
