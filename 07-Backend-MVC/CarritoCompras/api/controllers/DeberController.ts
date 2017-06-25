@@ -26,7 +26,6 @@ module.exports = {
 
 
   },
-
   Ejemplo2:(req,res)=>{
     //res.clearCookie()
     res.clearCookie('pachacama', { path: '/' });
@@ -36,4 +35,9 @@ module.exports = {
     res.clearCookie('rememberme', { path: '/' });
     return res.send('Cookies eliminadas');
   },
+  Ejemplo3:(req,res)=>{
+    //res.created()
+    return res.created('Nuevo widget creado.');
+  },
 };
+

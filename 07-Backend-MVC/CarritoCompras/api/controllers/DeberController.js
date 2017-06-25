@@ -25,4 +25,8 @@ module.exports = {
         res.clearCookie('rememberme', { path: '/' });
         return res.send('Cookies eliminadas');
     },
+    Ejemplo3: function (req, res) {
+        //res.created()
+        return res.created('Nuevo widget creado.');
+    },
 };
