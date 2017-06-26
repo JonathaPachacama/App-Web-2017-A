@@ -39,7 +39,9 @@ module.exports = {
     },
     Ejemplo5: function (req, res) {
         // res.set()
-        res.set('cabecera', 'hola');
+        res.set({ 'cabecera': 'hola',
+            'Cabecera2': '12345',
+            'Cabecera3': 1234567 });
         return res.send('Cabecera añadida');
     },
 };
