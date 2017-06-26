@@ -3,6 +3,7 @@
  */
 declare var module;
 declare var sails;
+
 //////////////////////////////// Deber
 module.exports = {
   Ejemplo:(req,res)=>{
@@ -54,6 +55,13 @@ module.exports = {
             'Cabecera3': 1234567});
     return res.send('Cabecera añadida');
   },
+  Ejemplo6:(req,res)=>{
+    // res.get ()
+    // Devuelve el valor actual de la cabecera de respuesta especificado ( header).
+    res.set('cabecera', 'hola');
+    return res.send(res.get('cabecera'))
+  },
+
 
 
 };

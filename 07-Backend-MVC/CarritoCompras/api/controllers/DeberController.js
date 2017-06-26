@@ -44,4 +44,10 @@ module.exports = {
             'Cabecera3': 1234567 });
         return res.send('Cabecera añadida');
     },
+    Ejemplo6: function (req, res) {
+        // res.get ()
+        // Devuelve el valor actual de la cabecera de respuesta especificado ( header).
+        res.set('cabecera', 'hola');
+        return res.send(res.get('cabecera'));
+    },
 };
