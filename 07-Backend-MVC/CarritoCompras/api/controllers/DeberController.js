@@ -57,4 +57,16 @@ module.exports = {
         //return res.json({ usuario: 'Jonathan' });
         return res.json(500, { error: 'message' });
     },
+    Ejemplo8: function (req, res) {
+        // res.jsonp ()
+        return res.jsonp({
+            users: [{
+                    nombre: 'Jonathan',
+                    id: 1
+                }, {
+                    nombre: 'Paul',
+                    id: 2
+                }]
+        });
+    },
 };
