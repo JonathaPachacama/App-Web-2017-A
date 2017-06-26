@@ -50,4 +50,11 @@ module.exports = {
         res.set('cabecera', 'hola');
         return res.send(res.get('cabecera'));
     },
+    Ejemplo7: function (req, res) {
+        // res.json ()
+        // Envía una respuesta JSON
+        //return res.json(null);
+        //return res.json({ usuario: 'Jonathan' });
+        return res.json(500, { error: 'message' });
+    },
 };
