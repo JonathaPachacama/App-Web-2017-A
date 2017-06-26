@@ -3,9 +3,7 @@
  */
 declare var module;
 declare var sails;
-declare var auxiliar;
-
-
+declare var Mascota;
 //////////////////////////////// Deber
 module.exports = {
   Ejemplo:(req,res)=>{
@@ -87,6 +85,18 @@ module.exports = {
     res.location('http://ejemplo9.com');
     return res.json('Locacion establecida');
   },
+  Ejemplo10:(req,res)=>{
+    //res.negotiate()
+    // Añadir cumplaños de Spuncher a una base de datos:
+    Mascota.update({nombre: 'Spuncher'})
+      .set({birthday: new Date('01/01/2010')})
+      .exec(function (err, Spuncher) {
+        if (err) return res.negotiate(err);
+        return res.ok(Spuncher);
+      });
+    },
+
+
 
 
 
