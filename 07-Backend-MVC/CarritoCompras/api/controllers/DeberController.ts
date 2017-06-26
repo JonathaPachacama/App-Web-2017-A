@@ -47,6 +47,11 @@ module.exports = {
       return res.forbidden('Se requiere acceso de escritura');
     }
   },
+  Ejemplo5:(req,res)=>{
+    // res.set()
+    res.set('cabecera','hola');
+    return res.send('Cabecera añadida');
+  },
 
 
 };

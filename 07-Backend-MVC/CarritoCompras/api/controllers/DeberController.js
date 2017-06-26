@@ -27,6 +27,19 @@ module.exports = {
     },
     Ejemplo3: function (req, res) {
         //res.created()
+        // Este método se utiliza para enviar un 201 respuesta ( "Creado") de vuelta al cliente que indica que uno o más recursos se han creado con éxito.
         return res.created('Nuevo widget creado.');
+    },
+    Ejemplo4: function (req, res) {
+        // res.forbidden ()
+        //Este método se utiliza para enviar un 403 respuesta ( "Prohibido") de vuelta al cliente indicando que la solicitud no está permitido.
+        if (!req.session.canEditSalesforceLeads) {
+            return res.forbidden('Se requiere acceso de escritura');
+        }
+    },
+    Ejemplo5: function (req, res) {
+        // res.set()
+        res.set('cabecera', 'hola');
+        return res.send('Cabecera añadida');
     },
 };
