@@ -69,4 +69,9 @@ module.exports = {
                 }]
         });
     },
+    Ejemplo9: function (req, res) {
+        //res.location()
+        res.location('http://ejemplo9.com');
+        return res.json('Locacion establecida');
+    },
 };

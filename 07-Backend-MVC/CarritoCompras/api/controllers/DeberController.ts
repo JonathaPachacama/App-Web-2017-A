@@ -3,6 +3,8 @@
  */
 declare var module;
 declare var sails;
+declare var auxiliar;
+
 
 //////////////////////////////// Deber
 module.exports = {
@@ -80,6 +82,12 @@ module.exports = {
       }]
     });
   },
+  Ejemplo9:(req,res)=>{
+    //res.location()
+    res.location('http://ejemplo9.com');
+    return res.json('Locacion establecida');
+  },
+
 
 
 
