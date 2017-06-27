@@ -1,5 +1,5 @@
 //En typescript podemos usar arrow fuction
-// /Saludo/
+// /Saludo/crearUsuarioQuemado
 module.exports = {
     welcome: function (req, res) {
         //POST
@@ -33,9 +33,10 @@ module.exports = {
             nombre: 'Jonathan',
             apellido: 'Pachacama',
             password: '12345',
-            email: 'jonathan.pachhacama@epn.edu.ec',
+            email: 'jonathan.pachacama@epn.edu.ec',
             fechaNacimiento: new Date()
         };
+        //nombreModelo.metodo(parametros).exec((err,registro)=>{})
         Usuario.create(nuevoUsuario)
             .exec(function (error, usuarioCreado) {
             if (error) {
