@@ -30,7 +30,13 @@ otra forma de levantar
 ```
 
 ##Comando para crear controladores
-Comando para crear controladores
-```
->sails generate controller Saludo
-```
+   Comando para crear controladores
+   ```
+   >sails generate controller Saludo
+   ```
+   
+   ##Comando para crear Modelos
+      Comando para crear Modelos
+      ```
+      >sails generate model Usuario
+      ```

@@ -1,4 +1,5 @@
 //En typescript podemos usar arrow fuction
+// /Saludo/
 module.exports = {
     welcome: function (req, res) {
         //POST
@@ -27,4 +28,22 @@ module.exports = {
             return res.send("Error en metodo (ruta bienvenida)");
         }
     },
+    crearUsuarioQuemado: function (req, res) {
+        var nuevoUsuario = {
+            nombre: 'Jonathan',
+            apellido: 'Pachacama',
+            password: '12345',
+            email: 'jonathan.pachhacama@epn.edu.ec',
+            fechaNacimiento: new Date()
+        };
+        Usuario.create(nuevoUsuario)
+            .exec(function (error, usuarioCreado) {
+            if (error) {
+                return res.serverError(error);
+            }
+            else {
+                return res.ok(usuarioCreado);
+            }
+        });
+    }
 };
