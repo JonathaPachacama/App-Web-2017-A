@@ -43,7 +43,7 @@ module.exports.connections = {
   dockerMysq: {
     adapter: 'sails-mysql',
     host: 'localhost',
-    user: 'Jonathan', //Nombre del usuario
+    user: 'jonathan', //Nombre del usuario
     password: '123456', //contraseña
     database: 'trabajo',//nombre de la base de datos
     port:3306 //puerto
