@@ -1,4 +1,5 @@
 //En typescript podemos usar arrow fuction
+// /Saludo/crearUsuarioQuemado
 module.exports = {
     welcome: function (req, res) {
         //POST
@@ -27,4 +28,23 @@ module.exports = {
             return res.send("Error en metodo (ruta bienvenida)");
         }
     },
+    crearUsuarioQuemado: function (req, res) {
+        var nuevoUsuario = {
+            nombre: 'Jonathan',
+            apellido: 'Pachacama',
+            password: '12345',
+            email: 'jonathan.pachacama@epn.edu.ec',
+            fechaNacimiento: new Date()
+        };
+        //nombreModelo.metodo(parametros).exec((err,registro)=>{})
+        Usuario.create(nuevoUsuario)
+            .exec(function (error, usuarioCreado) {
+            if (error) {
+                return res.serverError(error);
+            }
+            else {
+                return res.ok(usuarioCreado);
+            }
+        });
+    }
 };

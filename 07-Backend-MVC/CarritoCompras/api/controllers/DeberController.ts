@@ -95,11 +95,5 @@ module.exports = {
         return res.ok(Spuncher);
       });
     },
-
-
-
-
-
-
 };
 

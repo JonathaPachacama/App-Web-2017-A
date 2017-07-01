@@ -3,8 +3,11 @@
  */
 declare var module;
 declare var sails;
-
+declare var Usuario;
   //En typescript podemos usar arrow fuction
+
+
+// /Saludo/crearUsuarioQuemado
 module.exports = {
   welcome:(req,res)=>{
     //POST
@@ -32,4 +35,29 @@ module.exports = {
       return res.send("Error en metodo (ruta bienvenida)")
     }
   },
+
+  crearUsuarioQuemado:(req,res)=>{
+    let nuevoUsuario = {
+      nombre:'Jonathan',
+      apellido:'Pachacama',
+      password:'12345',
+      email:'jonathan.pachacama@epn.edu.ec',
+      fechaNacimiento:new Date()
+    }
+
+    //nombreModelo.metodo(parametros).exec((err,registro)=>{})
+    Usuario.create(nuevoUsuario)
+      .exec(
+        (error,usuarioCreado)=>{
+          if(error){
+            return res.serverError(error)
+          }else{
+            return res.ok(usuarioCreado);
+          }
+        }
+      )
+
+
+  }
+
 };
