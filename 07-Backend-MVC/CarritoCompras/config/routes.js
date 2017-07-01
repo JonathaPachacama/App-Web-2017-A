@@ -34,6 +34,10 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
+  },
+
+  '/Perfil': {
+    view: 'UsuarioPerfil/Perfil'
   }
 
   /***************************************************************************
