@@ -46,5 +46,24 @@ module.exports = {
                 return res.ok(usuarioCreado);
             }
         });
+    },
+    crearUsuarioQP: function (req, res) {
+        var nuevoUsuario = {
+            nombre: 'Jonathan',
+            apellido: 'Pachacama',
+            password: '12345',
+            email: 'jonathan.pachacama@epn.edu.ec',
+            fechaNacimiento: new Date()
+        };
+        //nombreModelo.metodo(parametros).exec((err,registro)=>{})
+        Usuario.create(nuevoUsuario)
+            .exec(function (error, usuarioCreado) {
+            if (error) {
+                return res.serverError(error);
+            }
+            else {
+                return res.ok(usuarioCreado);
+            }
+        });
     }
 };
