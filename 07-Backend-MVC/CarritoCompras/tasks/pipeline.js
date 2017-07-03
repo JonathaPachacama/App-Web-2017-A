@@ -20,7 +20,7 @@
   //Assets (estamos localizados aqui)
 var cssFilesToInject = [
     'styles/**/*.css',
-    'Bootstrap/css/boostrap.css'
+    'Bootstrap/css/bootstrap.css'
   ];
 
 
@@ -37,7 +37,7 @@ var jsFilesToInject = [
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
   'js/**/*.js',
-  'Boststrap/js/bootstrab.js'
+  'Boststrap/js/bootstrap.js'
 ];
 
 
