@@ -62,6 +62,9 @@ module.exports = {
 
   crearUsuarioQP:(req,res)=>{
     let parametros = req.allParams();
+
+    //  Ejemplo para crear por parametros query
+    // http://localhost:1337/Saludo/crearUsuarioQuemado?nombres=Vicente&fechaNacimiento=2016-01-02
     let nuevoUsuario = {
       nombres:parametros.nombres,
       apellidos:parametros.apellidos,
@@ -74,6 +77,10 @@ module.exports = {
     // 2 - Forms Parameters
 
     //nombreModelo.metodo(parametros).exec((err,registro)=>{})
+
+
+
+
     Usuario.create(nuevoUsuario)
       .exec(
         (error,usuarioCreado)=>{

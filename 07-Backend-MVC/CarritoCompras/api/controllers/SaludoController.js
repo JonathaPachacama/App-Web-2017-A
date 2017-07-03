@@ -49,6 +49,8 @@ module.exports = {
     },
     crearUsuarioQP: function (req, res) {
         var parametros = req.allParams();
+        //  Ejemplo para crear por parametros query
+        // http://localhost:1337/Saludo/crearUsuarioQuemado?nombres=Vicente&fechaNacimiento=2016-01-02
         var nuevoUsuario = {
             nombres: parametros.nombres,
             apellidos: parametros.apellidos,

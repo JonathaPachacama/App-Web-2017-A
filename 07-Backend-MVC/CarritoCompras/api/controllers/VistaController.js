@@ -1,11 +1,5 @@
-/**
- * VistaController
- *
- * @description :: Server-side logic for managing Vistas
- * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
- */
-
 module.exports = {
-
+    vistaOculta: function (req, res) {
+        return res.view('Oculto/sorpresa');
+    }
 };
-
