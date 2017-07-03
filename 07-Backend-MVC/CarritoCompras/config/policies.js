@@ -49,9 +49,8 @@ module.exports.policies = {
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
 
-
+//policies.js
  VistaController: {
-
-  vistaOculta: ['validarAno2016']
+   vistaOculta: ['validarAno2016']
    }
 };

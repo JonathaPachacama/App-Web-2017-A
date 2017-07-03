@@ -1,4 +1,7 @@
 declare var module;
-  module.exports = {
+module.exports = {
+  vistaOculta:(req,res)=>{
+    return res.view('Oculto/sorpresa')
+  }
 
 };

@@ -31,15 +31,17 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
-
-  '/': {
-    view: 'homepage'
+//No necesitan seguridad (libres)
+//   '/': {
+  'get /': {
+      view: 'homepage'
   },
 
   '/Perfil': {
     view: 'UsuarioPerfil/Perfil'
-  }
-
+  },
+  'get /ContenidoOculto':
+    +    'VistaController.vistaOculta',
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

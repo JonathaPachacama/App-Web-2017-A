@@ -38,14 +38,49 @@ module.exports = {
 
   crearUsuarioQuemado:(req,res)=>{
     let nuevoUsuario = {
-      nombre:'Jonathan',
-      apellido:'Pachacama',
+      nombres:'Jonathan',
+      apellidos:'Pachacama',
       password:'12345',
-      email:'jonathan.pachacama@epn.edu.ec',
+      correo:'jonathan.pachacama@epn.edu.ec',
       fechaNacimiento:new Date()
-    }
+    };
 
     //nombreModelo.metodo(parametros).exec((err,registro)=>{})
+    Usuario.create(nuevoUsuario)
+      .exec(
+        (error,usuarioCreado)=>{
+          if(error){
+            return res.serverError(error)
+          }else{
+            return res.ok(usuarioCreado);
+          }
+        }
+      )
+
+
+  },
+
+  crearUsuarioQP:(req,res)=>{
+    let parametros = req.allParams();
+
+    //  Ejemplo para crear por parametros query
+    // http://localhost:1337/Saludo/crearUsuarioQuemado?nombres=Vicente&fechaNacimiento=2016-01-02
+    let nuevoUsuario = {
+      nombres:parametros.nombres,
+      apellidos:parametros.apellidos,
+      password:parametros.password,
+      correo:parametros.correo,
+      fechaNacimiento:parametros.fechaNacimiento
+    };
+    // 1 - Query Parameters ?nombre=Adrian&apellidos=Eguez
+
+    // 2 - Forms Parameters
+
+    //nombreModelo.metodo(parametros).exec((err,registro)=>{})
+
+
+
+
     Usuario.create(nuevoUsuario)
       .exec(
         (error,usuarioCreado)=>{
