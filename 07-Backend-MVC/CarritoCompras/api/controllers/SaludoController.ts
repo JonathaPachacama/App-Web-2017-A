@@ -38,10 +38,10 @@ module.exports = {
 
   crearUsuarioQuemado:(req,res)=>{
     let nuevoUsuario = {
-      nombre:'Jonathan',
-      apellido:'Pachacama',
+      nombres:'Jonathan',
+      apellidos:'Pachacama',
       password:'12345',
-      email:'jonathan.pachacama@epn.edu.ec',
+      correo:'jonathan.pachacama@epn.edu.ec',
       fechaNacimiento:new Date()
     };
 
@@ -61,13 +61,17 @@ module.exports = {
   },
 
   crearUsuarioQP:(req,res)=>{
+    let parametros = req.allParams();
     let nuevoUsuario = {
-      nombre:'Jonathan',
-      apellido:'Pachacama',
-      password:'12345',
-      email:'jonathan.pachacama@epn.edu.ec',
-      fechaNacimiento:new Date()
-    }
+      nombres:parametros.nombres,
+      apellidos:parametros.apellidos,
+      password:parametros.password,
+      correo:parametros.correo,
+      fechaNacimiento:parametros.fechaNacimiento
+    };
+    // 1 - Query Parameters ?nombre=Adrian&apellidos=Eguez
+
+    // 2 - Forms Parameters
 
     //nombreModelo.metodo(parametros).exec((err,registro)=>{})
     Usuario.create(nuevoUsuario)
