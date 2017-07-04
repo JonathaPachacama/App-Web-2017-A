@@ -31,7 +31,33 @@ module.exports = {
       return res.badRequest("No envia ID");
     }
 
+  },
+  Validar:function(req,res){
+
+    var parametros = req.allParams();
+
+    if(parametros.token){
+      var decodificado = jwt
+        .verify(parametros.token, 'mi mama me mima');
+      return res.ok(decodificado);
+    }else{
+      return res.badRequest("No envia ID");
+    }
+
+  },
+  ValidarSecret:function(req,res){
+
+    var parametros = req.allParams();
+
+    if(parametros.token){
+      var decodificado = jwt
+        .verify(parametros.token, 'secret');
+      return res.ok(decodificado);
+    }else{
+      return res.badRequest("No envia ID");
+    }
+
   }
-  
+
 
 };
