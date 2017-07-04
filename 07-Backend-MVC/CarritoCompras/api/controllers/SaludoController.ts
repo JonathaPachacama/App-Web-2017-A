@@ -93,6 +93,36 @@ module.exports = {
       )
 
 
-  }
+  },
+  contar:(req,res)=>{
+    Usuario.count({nombres:'Jonathan'}).exec(function countCB(error, found) {
+      console.log('Hay' + found + ' Usuario llamado jonathan');
+
+      return res.send("contado exitoso")
+    });
+  },
+
+  destruir:(req,res)=>{
+    Usuario.destroy({nombres:'Jonathan'}).exec(function (err){
+      if (err) {
+        return res.negotiate(err);
+      }
+      sails.log('Algun usuario llamado Jonathan ha sido eliminado, si hay alguno.');
+      return res.ok();
+    });
+  },
+
+  actualizar:(req,res)=>{
+    Usuario.update({nombres:'Jonathan'},{nombres:'Paul'}).exec(function afterwards(err, updated){
+
+      if (err) {
+        // handle error here- e.g. `res.serverError(err);`
+        return;
+      }
+
+      console.log('Actualizado el nombre de jonathan a paul');
+    });
+
+  },
 
 };

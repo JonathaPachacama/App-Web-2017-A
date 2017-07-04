@@ -40,7 +40,7 @@ module.exports.routes = {
     view:'UsuarioGestion/perfil'
   },
   'get /ContenidoOculto':
-    +    'VistaController.vistaOculta',
+       'VistaController.vistaOculta',
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
