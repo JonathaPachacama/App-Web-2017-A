@@ -51,6 +51,7 @@ module.exports.policies = {
 
 //policies.js
  VistaController: {
-   vistaOculta: ['validarAno2016']
+   // vistaOculta: ['validarAno2016']
+    vistaOculta: ['validarCabeceraAuthorization']
    }
 };
