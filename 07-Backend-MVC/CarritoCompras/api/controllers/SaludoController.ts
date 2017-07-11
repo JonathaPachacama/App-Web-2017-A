@@ -113,16 +113,51 @@ module.exports = {
   },
 
   actualizar:(req,res)=>{
+
     Usuario.update({nombres:'Jonathan'},{nombres:'Paul'}).exec(function afterwards(err, updated){
 
       if (err) {
-        // handle error here- e.g. `res.serverError(err);`
-        return;
+
+        sails.log('No actualizado');
+        return res.negotiate(err);
+      }else {
+        console.log('Actualizado el nombre de jonathan a paul');
+        return res.send('actualizado')
       }
 
-      console.log('Actualizado el nombre de jonathan a paul');
+
     });
 
   },
+  encontrar:(req,res)=>{
+    let parametros = req.allParams();
+    Usuario.find({nombres:parametros.nombres}).exec(function (err, UsuarioEncontrado){
+      if (err) {
+        return res.serverError(err);
+      }
+      sails.log('Hay %d usuarios de nombre Jonathan.', UsuarioEncontrado.length, UsuarioEncontrado);
+      return res.json(UsuarioEncontrado);
+    });
+
+  },
+  encontrarUno:(req,res)=>{
+    let parametros = req.allParams();
+    Usuario.findOne({
+      nombres:parametros.nombres
+    }).exec(function (err, encontrarJonathan){
+      if (err) {
+        return res.serverError(err);
+      }
+      if (!encontrarJonathan) {
+        return res.notFound('No se pudo encontrar Jonathan, Lo siento.');
+      }
+
+      sails.log('Usuario Encontrado');
+      return res.json(encontrarJonathan);
+    });
+  },
+
+
+
 
 };
