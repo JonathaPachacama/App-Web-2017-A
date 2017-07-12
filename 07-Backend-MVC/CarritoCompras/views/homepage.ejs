@@ -1,10 +1,17 @@
 <h1>Homepage</h1>
+<div class="row">
+<% for(var i=0; i<usuarios.length; i++) {%>
+<div class="card" style="width: 20rem;">
+  <div class="card-block">
 
-<% var numero =5%>
-<% usuario.id = usuario.id + numero%>
-<% console.log("El id es:",usuario.id); %>
+    <h4 class="card-title"><%= usuarios[i].nombres %> </h4>
+    <p class="card-text">
+      <%= usuarios[i].correo %>
+    </p>
+    <a href="#" class="btn btn-primary">Mostrar Perfil</a>
+  </div>
+</div>
+<% } %>
+</div>
 
-<p><%= usuario.nombres %></p>
-<p><%= usuario.apellidos %></p>
-<p><%= usuario.id %></p>
-<input type="text" value="<%= usuario.nombres %>">
+
