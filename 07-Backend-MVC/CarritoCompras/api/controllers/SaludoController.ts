@@ -93,6 +93,71 @@ module.exports = {
       )
 
 
-  }
+  },
+  contar:(req,res)=>{
+    Usuario.count({nombres:'Jonathan'}).exec(function countCB(error, found) {
+      console.log('Hay' + found + ' Usuario llamado jonathan');
+
+      return res.send("contado exitoso")
+    });
+  },
+
+  destruir:(req,res)=>{
+    Usuario.destroy({nombres:'Jonathan'}).exec(function (err){
+      if (err) {
+        return res.negotiate(err);
+      }
+      sails.log('Algun usuario llamado Jonathan ha sido eliminado, si hay alguno.');
+      return res.ok();
+    });
+  },
+
+  actualizar:(req,res)=>{
+
+    Usuario.update({nombres:'Jonathan'},{nombres:'Paul'}).exec(function afterwards(err, updated){
+
+      if (err) {
+
+        sails.log('No actualizado');
+        return res.negotiate(err);
+      }else {
+        console.log('Actualizado el nombre de jonathan a paul');
+        return res.send('actualizado')
+      }
+
+
+    });
+
+  },
+  encontrar:(req,res)=>{
+    let parametros = req.allParams();
+    Usuario.find({nombres:parametros.nombres}).exec(function (err, UsuarioEncontrado){
+      if (err) {
+        return res.serverError(err);
+      }
+      sails.log('Hay %d usuarios de nombre Jonathan.', UsuarioEncontrado.length, UsuarioEncontrado);
+      return res.json(UsuarioEncontrado);
+    });
+
+  },
+  encontrarUno:(req,res)=>{
+    let parametros = req.allParams();
+    Usuario.findOne({
+      nombres:parametros.nombres
+    }).exec(function (err, encontrarJonathan){
+      if (err) {
+        return res.serverError(err);
+      }
+      if (!encontrarJonathan) {
+        return res.notFound('No se pudo encontrar Jonathan, Lo siento.');
+      }
+
+      sails.log('Usuario Encontrado');
+      return res.json(encontrarJonathan);
+    });
+  },
+
+
+
 
 };

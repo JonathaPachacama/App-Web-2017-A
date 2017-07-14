@@ -33,14 +33,13 @@ module.exports.routes = {
   ***************************************************************************/
 //No necesitan seguridad (libres)
 //   '/': {
-  'get /': {
-      view: 'homepage'
-  },
+  'get /': 'VistaController.homepage',
+
   '/perfil':{
     view:'UsuarioGestion/perfil'
   },
   'get /ContenidoOculto':
-    +    'VistaController.vistaOculta',
+       'VistaController.vistaOculta',
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
