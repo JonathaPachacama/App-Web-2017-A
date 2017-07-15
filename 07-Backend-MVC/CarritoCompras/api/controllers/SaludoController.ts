@@ -61,8 +61,11 @@ module.exports = {
   },
 
   crearUsuarioQP:(req,res)=>{
-    let parametros = req.allParams();
 
+    //localhost:1337/Saludo/crearUsuarioQP ==> PATH absoluto
+    //  /Saludo/crearUsuarioQP    ==> PATH relativo
+    let parametros = req.allParams();
+    sails.log.info("Parametros",parametros);
     //  Ejemplo para crear por parametros query
     // http://localhost:1337/Saludo/crearUsuarioQuemado?nombres=Vicente&fechaNacimiento=2016-01-02
     let nuevoUsuario = {
@@ -87,7 +90,19 @@ module.exports = {
           if(error){
             return res.serverError(error)
           }else{
-            return res.ok(usuarioCreado);
+            // return res.ok(usuarioCreado);
+            /*
+
+                             Usuario.find().exec((err,usuarios)=>{
+                               if(err) return res.negotiate(err);
+                               sails.log.info("Usuarios",usuarios);
+
+                               return res.view('homepage',{
+                                 usuarios:usuarios
+                               })
+                             })
+                            */
+            return res.redirect("/");
           }
         }
       )
@@ -101,7 +116,6 @@ module.exports = {
       return res.send("contado exitoso")
     });
   },
-
   destruir:(req,res)=>{
     Usuario.destroy({nombres:'Jonathan'}).exec(function (err){
       if (err) {
@@ -111,7 +125,6 @@ module.exports = {
       return res.ok();
     });
   },
-
   actualizar:(req,res)=>{
 
     Usuario.update({nombres:'Jonathan'},{nombres:'Paul'}).exec(function afterwards(err, updated){

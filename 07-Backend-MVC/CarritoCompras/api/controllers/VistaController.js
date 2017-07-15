@@ -1,3 +1,5 @@
+///<reference path="SaludoController.ts"/>
+var Passwords = require('machinepack-passwords');
 module.exports = {
     vistaOculta: function (req, res) {
         return res.view('Oculto/sorpresa');
@@ -26,5 +28,42 @@ module.exports = {
         // return res.view('homepage',{
         //   usuario:usuarioModelo
         // })
+    },
+    login: function (req, res) {
+        var parametros = req.allParams();
+        if (parametros.correo && parametros.password) {
+            Usuario.findOne({
+                correo: parametros.correo
+            }).exec(function (err, usuarioEncontrado) {
+                if (err)
+                    return res.negotiate(err);
+                if (!usuarioEncontrado) {
+                    return res.serverError('El usuario no existe');
+                }
+                else {
+                    Passwords.checkPassword({
+                        passwordAttempt: parametros.password,
+                        encryptedPassword: usuarioEncontrado.password,
+                    })
+                        .exec({
+                        error: function (err) {
+                            return res.serverError(err);
+                        },
+                        incorrect: function () {
+                            return res.badRequest("Datos Invalidos");
+                        },
+                        success: function () {
+                            return res.send('logeado');
+                        }
+                    });
+                }
+            });
+        }
+        else {
+            return res.serverError('No envia correo y password');
+        }
+    },
+    crearUsuario: function (req, res) {
+        return res.view('crearusuario');
     }
 };

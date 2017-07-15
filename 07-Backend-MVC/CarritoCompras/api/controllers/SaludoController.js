@@ -48,7 +48,10 @@ module.exports = {
         });
     },
     crearUsuarioQP: function (req, res) {
+        //localhost:1337/Saludo/crearUsuarioQP ==> PATH absoluto
+        //  /Saludo/crearUsuarioQP    ==> PATH relativo
         var parametros = req.allParams();
+        sails.log.info("Parametros", parametros);
         //  Ejemplo para crear por parametros query
         // http://localhost:1337/Saludo/crearUsuarioQuemado?nombres=Vicente&fechaNacimiento=2016-01-02
         var nuevoUsuario = {
@@ -67,7 +70,19 @@ module.exports = {
                 return res.serverError(error);
             }
             else {
-                return res.ok(usuarioCreado);
+                // return res.ok(usuarioCreado);
+                /*
+    
+                                 Usuario.find().exec((err,usuarios)=>{
+                                   if(err) return res.negotiate(err);
+                                   sails.log.info("Usuarios",usuarios);
+    
+                                   return res.view('homepage',{
+                                     usuarios:usuarios
+                                   })
+                                 })
+                                */
+                return res.redirect("/");
             }
         });
     },
