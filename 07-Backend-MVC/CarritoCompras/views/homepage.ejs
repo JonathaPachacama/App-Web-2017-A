@@ -4,9 +4,15 @@
 <div class="card" style="width: 20rem;">
   <div class="card-block">
 
-    <h4 class="card-title"><%= usuarios[i].nombres %> </h4>
+    <h4 class="card-title"><%= usuarios[i].nombres %> - <%= usuarios[i].apellidos %> </h4>
     <p class="card-text">
       <%= usuarios[i].correo %>
+    </p>
+    <p class="card-text">
+      <%= usuarios[i].password %>
+    </p>
+    <p class="card-text">
+      <%= usuarios[i].fechaNacimiento %>
     </p>
     <a href="#" class="btn btn-primary">Mostrar Perfil</a>
   </div>

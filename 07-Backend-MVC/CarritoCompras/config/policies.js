@@ -53,5 +53,6 @@ module.exports.policies = {
  VistaController: {
    // vistaOculta: ['validarAno2016']
     vistaOculta: ['validarCabeceraAuthorization']
+    // login: ['validarHash']
    }
 };

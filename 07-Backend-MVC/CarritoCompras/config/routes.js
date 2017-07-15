@@ -40,6 +40,8 @@ module.exports.routes = {
   },
   'get /ContenidoOculto':
        'VistaController.vistaOculta',
+  'get /login':
+    'VistaController.login',
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
