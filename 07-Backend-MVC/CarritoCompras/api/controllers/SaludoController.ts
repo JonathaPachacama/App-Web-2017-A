@@ -90,7 +90,19 @@ module.exports = {
           if(error){
             return res.serverError(error)
           }else{
-            return res.ok(usuarioCreado);
+            // return res.ok(usuarioCreado);
+            /*
+
+                             Usuario.find().exec((err,usuarios)=>{
+                               if(err) return res.negotiate(err);
+                               sails.log.info("Usuarios",usuarios);
+
+                               return res.view('homepage',{
+                                 usuarios:usuarios
+                               })
+                             })
+                            */
+            return res.redirect("/");
           }
         }
       )

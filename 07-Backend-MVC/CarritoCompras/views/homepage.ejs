@@ -14,8 +14,12 @@
     <p class="card-text">
       <%= usuarios[i].fechaNacimiento %>
     </p>
-    <a href="#" class="btn btn-primary">Mostrar Perfil</a>
+    <form action="/Saludo/eliminarUsuario?id=<%=usuarios[i].id%>" method="post">
+      <button  type="submit" class="btn btn-outline-danger">Borrar</button>
+    </form>
   </div>
+
+
 </div>
 <% } %>
 </div>
