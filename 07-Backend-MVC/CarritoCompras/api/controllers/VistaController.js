@@ -63,4 +63,7 @@ module.exports = {
             return res.serverError('No envia correo y password');
         }
     },
+    crearUsuario: function (req, res) {
+        return res.view('crearusuario');
+    }
 };

@@ -70,4 +70,8 @@ module.exports = {
     }
   },
 
+  crearUsuario:(req,res)=>{
+    return res.view('crearusuario');
+  }
+
 };
