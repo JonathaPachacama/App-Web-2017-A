@@ -1,5 +1,6 @@
 ///<reference path="SaludoController.ts"/>
 var Passwords = require('machinepack-passwords');
+var jwt = require('jsonwebtoken');
 module.exports = {
     vistaOculta: function (req, res) {
         return res.view('Oculto/sorpresa');
@@ -10,11 +11,25 @@ module.exports = {
         //   apellidos:"Pachacama",
         //   id:"1",
         // };
-        Usuario.find().exec(function (err, usuariosEncontrados) {
+        var parametros = req.allParams();
+        //let where = {};
+        sails.log.info("Parametros", parametros);
+        Usuario
+            .find()
+            .where({
+            nombres: {
+                contains: parametros.busqueda
+            },
+            apellidos: {
+                contains: parametros.busqueda2
+            }
+        })
+            .exec(function (err, usuarios) {
             if (err)
                 return res.negotiate(err);
+            sails.log.info("Usuarios", usuarios);
             return res.view('homepage', {
-                usuarios: usuariosEncontrados
+                usuarios: usuarios
             });
         });
         ////Otra forma
@@ -32,35 +47,42 @@ module.exports = {
     login: function (req, res) {
         var parametros = req.allParams();
         if (parametros.correo && parametros.password) {
-            Usuario.findOne({
-                correo: parametros.correo
-            }).exec(function (err, usuarioEncontrado) {
+            Usuario.findOne({ correo: parametros.correo })
+                .exec(function (err, usuarioEncontrado) {
                 if (err)
                     return res.negotiate(err);
                 if (!usuarioEncontrado) {
                     return res.serverError('El usuario no existe');
                 }
                 else {
-                    Passwords.checkPassword({
-                        passwordAttempt: parametros.password,
-                        encryptedPassword: usuarioEncontrado.password,
-                    })
-                        .exec({
-                        error: function (err) {
-                            return res.serverError(err);
-                        },
-                        incorrect: function () {
-                            return res.badRequest("Datos Invalidos");
-                        },
-                        success: function () {
-                            return res.send('logeado');
-                        }
-                    });
+                    if (parametros.password == usuarioEncontrado.password) {
+                        console.log("Estas logeado");
+                        return res.view('UsuarioGestion/perfil');
+                    }
+                    else {
+                        return res.serverError("Password Incorrecta");
+                    }
+                    // Passwords.checkPassword({
+                    //   passwordAttempt: parametros.password,
+                    //   encryptedPassword: usuarioEncontrado.password,
+                    // })
+                    //   .exec({
+                    //     error: function (err) {
+                    //       return res.serverError(err);
+                    //     },
+                    //     incorrect: function () {
+                    //       return res.badRequest("Datos Invalidos")
+                    //     },
+                    //     success: function () {
+                    //       return res.view('UsuarioGestion/perfil');
+                    //     }
+                    //   });
                 }
             });
         }
         else {
-            return res.serverError('No envia correo y password');
+            sails.log('Usuario eliminado');
+            return res.serverError("No envia correo y pass");
         }
     },
     crearUsuario: function (req, res) {

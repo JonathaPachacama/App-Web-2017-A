@@ -1,4 +1,32 @@
 <h1>Homepage</h1>
+<form action="/">
+  <div class="form-group row">
+    <label for="busqueda" class="col-4 col-form-label">
+      Busque por Nombres o Apellidos
+    </label>
+    <div class="col-4">
+      <input class="form-control" type="text" placeholder="Buscar por Nombre" id="busqueda"
+             name="busqueda">
+
+    </div>
+    <div class="col-4">
+      <input class="form-control" type="text" placeholder="Buscar por Apellido" id="busqueda2"
+             name="busqueda2">
+
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <button class="btn btn-success btn-block">Buscar</button>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</form>
+
+<br>
+<br>
 <div class="row">
 <% for(var i=0; i<usuarios.length; i++) {%>
 <div class="card" style="width: 20rem;">
@@ -14,14 +42,22 @@
     <p class="card-text">
       <%= usuarios[i].fechaNacimiento %>
     </p>
-    <form action="/Saludo/eliminarUsuario?id=<%=usuarios[i].id%>" method="post">
+    <p class="card-text">
+      <%= usuarios[i].id %>
+    </p>
+    <form action="/Usuario/eliminarUsuario" method="post">
+      <input hidden
+             type="text"
+             value="<%=usuarios[i].id%>"
+             name="id">
       <button  type="submit" class="btn btn-outline-danger">Borrar</button>
     </form>
   </div>
-
-
 </div>
 <% } %>
 </div>
-
+<br>
+<br>
+<br>
+<br>
 

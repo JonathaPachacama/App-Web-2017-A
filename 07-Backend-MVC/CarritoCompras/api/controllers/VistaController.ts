@@ -1,7 +1,9 @@
 ///<reference path="SaludoController.ts"/>
 declare var module;
 declare var require;
+declare var sails;
 var Passwords = require('machinepack-passwords');
+var jwt = require('jsonwebtoken');
 module.exports = {
   vistaOculta:(req,res)=>{
     return res.view('Oculto/sorpresa')
@@ -14,12 +16,26 @@ module.exports = {
     //   id:"1",
     // };
 
-    Usuario.find().exec((err, usuariosEncontrados)=>{
-      if (err)return res.negotiate(err);
-      return res.view('homepage',{
-        usuarios:usuariosEncontrados
-      })
+    let parametros = req.allParams();
 
+    //let where = {};
+    sails.log.info("Parametros",parametros);
+    Usuario
+      .find()
+      .where({
+        nombres:{
+          contains:parametros.busqueda
+        },
+        apellidos:{
+          contains:parametros.busqueda2
+        }
+      })
+      .exec((err, usuarios)=>{
+      if (err)return res.negotiate(err);
+      sails.log.info("Usuarios",usuarios);
+      return res.view('homepage',{
+        usuarios:usuarios
+      })
     });
     ////Otra forma
     // homepage: (req,res) => {
@@ -37,36 +53,46 @@ module.exports = {
   },
 
   login:(req,res)=>{
-    var parametros = req.allParams()
-    if(parametros.correo&&parametros.password) {
-      Usuario.findOne({
-          correo:parametros.correo
-        }).exec((err, usuarioEncontrado) => {
-        if (err)return res.negotiate(err,);
-        if (!usuarioEncontrado) {
-          return res.serverError('El usuario no existe')
-        } else {
-          Passwords.checkPassword({
-            passwordAttempt: parametros.password,
-            encryptedPassword: usuarioEncontrado.password,
-          })
-            .exec({
-              error: function (err) {
-                return res.serverError(err);
-              },
-              incorrect: function () {
-                return res.badRequest("Datos Invalidos")
-              },
-              success: function () {
-                return res.send('logeado')
-              }
-            });
-        }
+    var parametros = req.allParams();
+    if(parametros.correo&&parametros.password){
+        Usuario.findOne({correo:parametros.correo})
+        .exec((err, usuarioEncontrado) => {
+            if (err)return res.negotiate(err,);
+            if (!usuarioEncontrado) {
+              return res.serverError('El usuario no existe')
+            }
+            else{
 
-      });
+               if(parametros.password==usuarioEncontrado.password){
+                console.log("Estas logeado");
+                 return res.view('UsuarioGestion/perfil');
+               }else{
+                 return res.serverError("Password Incorrecta")
+               }
+              // Passwords.checkPassword({
+              //   passwordAttempt: parametros.password,
+              //   encryptedPassword: usuarioEncontrado.password,
+              // })
+              //   .exec({
+              //     error: function (err) {
+              //       return res.serverError(err);
+              //     },
+              //     incorrect: function () {
+              //       return res.badRequest("Datos Invalidos")
+              //     },
+              //     success: function () {
+              //       return res.view('UsuarioGestion/perfil');
+              //     }
+              //   });
 
-    }  else{
-      return res.serverError('No envia correo y password')
+            }
+
+        });
+    }
+    else{
+      sails.log('Usuario eliminado');
+      return res.serverError("No envia correo y pass")
+
     }
   },
 

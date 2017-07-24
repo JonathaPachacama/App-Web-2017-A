@@ -92,13 +92,15 @@ module.exports = {
             return res.send("contado exitoso");
         });
     },
-    destruir: function (req, res) {
-        Usuario.destroy({ nombres: 'Jonathan' }).exec(function (err) {
+    eliminarUsuario: function (req, res) {
+        var parametros = req.allParams();
+        Usuario.destroy({ id: parametros.id }).exec(function (err) {
             if (err) {
                 return res.negotiate(err);
             }
-            sails.log('Algun usuario llamado Jonathan ha sido eliminado, si hay alguno.');
-            return res.ok();
+            sails.log('Usuario eliminado');
+            console.log(parametros);
+            return res.redirect("/");
         });
     },
     actualizar: function (req, res) {
