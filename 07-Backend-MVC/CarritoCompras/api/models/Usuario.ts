@@ -25,27 +25,27 @@ module.export={
   beforeCreate: function (usuario,cb) {
 
     Passwords.encryptPassword({password: usuario.password}).exec({
-      error: function (err) {
+      error: (err) => {
         cb("error en hash Password",err)
       },
-      success: function (hashedPassword) {
+      success:(hashedPassword)=>{
         usuario.password = hashedPassword;
         cb()
       },
     });
   },
 
-  beforeUpdate: function (valorAActualizar,cb) {
+  beforeUpdate: (valorAActualizar,cb)=>{
     if (valorAActualizar.password) {
       Passwords.encryptPassword({
         password: valorAActualizar.password
       })
         .exec(
           {
-            error: function (err) {
+            error:(err) =>{
               cb("error en hash Password",err)
             },
-            success: function (hashedPassword) {
+            success: (hashedPassword)=>{
               valorAActualizar.password = hashedPassword;
               cb()
             },
