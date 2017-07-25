@@ -22,13 +22,19 @@ module.exports = {
     sails.log.info("Parametros",parametros);
     Usuario
       .find()
-      .where({
-        nombres:{
-          contains:parametros.busqueda
+      .where({or:[
+        {
+          nombres:{
+            contains:parametros.busqueda
+          }
         },
-        apellidos:{
-          contains:parametros.busqueda2
+        {
+          apellidos:{
+            contains:parametros.busqueda
+          }
         }
+      ]
+
       })
       .exec((err, usuarios)=>{
       if (err)return res.negotiate(err);
