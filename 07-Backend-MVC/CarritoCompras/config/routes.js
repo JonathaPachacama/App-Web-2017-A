@@ -44,8 +44,10 @@ module.exports.routes = {
     {
       view:'login'
     },
-  'get /crearusuario':
-    'VistaController.crearUsuario'
+  'get /crearUsuario':
+    'VistaController.crearUsuario',
+  'get /editarUsuario':
+    'VistaController.editarUsuario'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

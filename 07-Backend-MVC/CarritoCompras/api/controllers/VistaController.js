@@ -12,6 +12,9 @@ module.exports = {
         //   id:"1",
         // };
         var parametros = req.allParams();
+        if (!parametros.busqueda) {
+            parametros.busqueda = '';
+        }
         //let where = {};
         sails.log.info("Parametros", parametros);
         Usuario
@@ -92,5 +95,28 @@ module.exports = {
     },
     crearUsuario: function (req, res) {
         return res.view('crearusuario');
+    },
+    editarUsuario: function (req, res) {
+        var parametros = req.allParams();
+        if (parametros.id) {
+            Usuario.findOne({
+                id: parametros.id
+            })
+                .exec(function (err, usuarioEncontrado) {
+                if (err)
+                    return res.serverError(err);
+                if (usuarioEncontrado) {
+                    //Si encontro
+                    return res.view('editarusuario');
+                }
+                else {
+                    //no Encontrado
+                    return res.redirect('/crearUsuario');
+                }
+            });
+        }
+        else {
+            return res.redirect('/crearUsuario');
+        }
     }
 };
