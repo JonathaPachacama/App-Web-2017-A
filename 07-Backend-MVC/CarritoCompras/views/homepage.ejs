@@ -46,7 +46,13 @@
              value="<%=usuarios[i].id%>"
              name="id">
       <button  type="submit" class="btn btn-outline-danger">Borrar</button>
+
+
     </form>
+    <a href="/editarUsuario?id=<%= usuarios[i].id %>">
+      <button  class="btn btn-primary">Editar</button>
+    </a>
+
   </div>
 </div>
 <% } %>

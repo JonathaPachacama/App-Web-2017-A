@@ -119,7 +119,9 @@ module.exports = {
 
         if(usuarioEncontrado){
           //Si encontro
-          return res.view('editarusuario')
+          return res.view('editarusuario',{
+            usuario:usuarioEncontrado
+          })
         }else{
           //no Encontrado
           return res.redirect('/crearUsuario')
