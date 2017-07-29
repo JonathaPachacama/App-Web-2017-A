@@ -20,6 +20,10 @@ module.exports = {
     fechaFin:{
       type:'date',
       required:true
+    },
+    fkIdCarrera:{
+      model:'Carrera',
+      required:true
     }
 
   }
