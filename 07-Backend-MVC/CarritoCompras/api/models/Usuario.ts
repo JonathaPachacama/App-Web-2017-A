@@ -2,7 +2,7 @@
  * Created by visitante on 26/06/2017.
  */
 declare var module:any;
-var Passwords = require('machinepack-passwords');
+//var Passwords = require('machinepack-passwords');
 module.export={
   attributes:{
     nombres:{
@@ -20,8 +20,14 @@ module.export={
     },
     fechaNacimiento:{
       type:"date"
+    },
+    matriculas:{
+      collecion:'Matricula',
+      via:'fkIdUsuario'
     }
   },
+
+  /*
   beforeCreate: function (usuario,cb) {
 
     Passwords.encryptPassword({password: usuario.password}).exec({
@@ -56,4 +62,6 @@ module.export={
 
 
   }
+ */
+
 };

@@ -17,18 +17,26 @@ module.exports = {
     // };
 
     let parametros = req.allParams();
-
+    if (!parametros.busqueda) {
+      parametros.busqueda = '';
+    }
     //let where = {};
     sails.log.info("Parametros",parametros);
     Usuario
       .find()
-      .where({
-        nombres:{
-          contains:parametros.busqueda
+      .where({or:[
+        {
+          nombres:{
+            contains:parametros.busqueda
+          }
         },
-        apellidos:{
-          contains:parametros.busqueda2
+        {
+          apellidos:{
+            contains:parametros.busqueda
+          }
         }
+      ]
+
       })
       .exec((err, usuarios)=>{
       if (err)return res.negotiate(err);
@@ -98,6 +106,31 @@ module.exports = {
 
   crearUsuario:(req,res)=>{
     return res.view('crearusuario');
+  },
+
+  editarUsuario:(req,res)=>{
+    let parametros = req.allParams();
+    if(parametros.id){
+      Usuario.findOne({
+        id:parametros.id
+      })
+        .exec((err,usuarioEncontrado)=>{
+        if(err) return res.serverError(err);
+
+        if(usuarioEncontrado){
+          //Si encontro
+          return res.view('editarusuario',{
+            usuario:usuarioEncontrado
+          })
+        }else{
+          //no Encontrado
+          return res.redirect('/crearUsuario')
+        }
+      });
+    }else{
+      return res.redirect('/crearUsuario');
+    }
+
   }
 
 };

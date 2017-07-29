@@ -5,13 +5,8 @@
       Busque por Nombres o Apellidos
     </label>
     <div class="col-4">
-      <input class="form-control" type="text" placeholder="Buscar por Nombre" id="busqueda"
+      <input class="form-control" type="text" placeholder="Buscar" id="busqueda"
              name="busqueda">
-
-    </div>
-    <div class="col-4">
-      <input class="form-control" type="text" placeholder="Buscar por Apellido" id="busqueda2"
-             name="busqueda2">
 
     </div>
 
@@ -51,7 +46,13 @@
              value="<%=usuarios[i].id%>"
              name="id">
       <button  type="submit" class="btn btn-outline-danger">Borrar</button>
+      <a href="/editarUsuario?id=<%= usuarios[i].id %>">
+        <button type="button"  class="btn btn-primary">Editar</button>
+      </a>
+
     </form>
+
+
   </div>
 </div>
 <% } %>
