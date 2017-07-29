@@ -13,7 +13,12 @@ module.exports = {
       required:true
     },
     fkIdUniversidad:{
-      model:'Universidad'
+      model:'Universidad',
+      required:true
+    },
+    departamentos:{
+      collection:'Departamento',
+      via:'fkIdFacultad'
     }
 
   }
