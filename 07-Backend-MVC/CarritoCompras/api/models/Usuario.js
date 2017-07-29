@@ -1,4 +1,4 @@
-var Passwords = require('machinepack-passwords');
+//var Passwords = require('machinepack-passwords');
 module.export = {
     attributes: {
         nombres: {
@@ -18,34 +18,4 @@ module.export = {
             type: "date"
         }
     },
-    beforeCreate: function (usuario, cb) {
-        Passwords.encryptPassword({ password: usuario.password }).exec({
-            error: function (err) {
-                cb("error en hash Password", err);
-            },
-            success: function (hashedPassword) {
-                usuario.password = hashedPassword;
-                cb();
-            },
-        });
-    },
-    beforeUpdate: function (valorAActualizar, cb) {
-        if (valorAActualizar.password) {
-            Passwords.encryptPassword({
-                password: valorAActualizar.password
-            })
-                .exec({
-                error: function (err) {
-                    cb("error en hash Password", err);
-                },
-                success: function (hashedPassword) {
-                    valorAActualizar.password = hashedPassword;
-                    cb();
-                },
-            });
-        }
-        else {
-            cb();
-        }
-    }
 };
