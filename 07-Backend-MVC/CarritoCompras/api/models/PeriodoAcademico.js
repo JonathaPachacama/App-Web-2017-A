@@ -7,7 +7,20 @@
 
 module.exports = {
 
+  //Periodo Academico
   attributes: {
+    nombre:{
+      type:'string',
+      required:true
+    },
+    fechaInicio:{
+      type:'date',
+      required:true
+    },
+    fechaFin:{
+      type:'date',
+      required:true
+    }
 
   }
 };
