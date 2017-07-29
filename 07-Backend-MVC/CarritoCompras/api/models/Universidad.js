@@ -26,11 +26,9 @@ module.exports = {
       defaultsTo:'Cerrado'
 
     },
-    correo:{
-      type:"email"
-    },
-    fechaNacimiento:{
-      type:"date"
+    facultades:{
+      collection:'Facultad', // Tabla con la que nos relacionamos
+      via:'fkIdUniversidad'
     }
 
   }
