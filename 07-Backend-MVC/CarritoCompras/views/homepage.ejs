@@ -1,4 +1,17 @@
 <h1>Homepage</h1>
+
+<h2>Crear Usuario</h2>
+<div class="form-group row">
+  <label for="nombres" class="col-4 col-form-label">
+    Ingrese Nombres
+  </label>
+  <div class="col-8">
+    <input type="form-control" type="text" placeholder="Jonathan Paul" id="nombres">
+  </div>
+</div>
+<button class="btn btn-primary" onclick="crearNuevoUsuario()">Crear Nuevo Usuario</button>
+<br><br>
+<h2>Busqueda de Usuarios</h2>
 <form action="/">
   <div class="form-group row">
     <label for="busqueda" class="col-4 col-form-label">
@@ -22,7 +35,7 @@
 
 <br>
 <br>
-<div class="row">
+<div id="contenedor" class="row">
 <% for(var i=0; i<usuarios.length; i++) {%>
 <div class="card" style="width: 20rem;">
   <div class="card-block">
@@ -62,3 +75,45 @@
 <br>
 <br>
 
+<script >
+  var url = "http://localhost:1337/Usuario";
+  var metodo = "POST";
+  var xhttp;
+  var campoNombre;
+  var usuario;
+
+
+  function crearNuevoUsuario() {
+      campoNombre = document.getElementById("nombres").value;
+      usuario = {
+          nombres:campoNombre
+      }
+      //crear el nuevo httto request
+      xhttp = new XMLHttpRequest();
+      //Definicion de la funcion
+      //que es lo qeu va a pasar cuando me responda
+      xhttp.onreadystatechange =  agregarUsuarioALaInterfaz
+
+      //Definir (URL y METODO, DATO)
+      var parametros = "?nombres="+usuario.nombres
+    xhttp.open(metodo,url+parametros)
+
+    //enviar request
+
+    xhttp.send();
+
+  }
+
+  function  agregarUsuarioALaInterfaz() {
+    if (this.readyState == 4 && this.status == 201) {
+      var usuarioCreado = JSON.parse(xhttp.responseText);
+      var nuevoUsuarioNodo = document.createElement("div")
+      nuevoUsuarioNodo.className = "col-sm-4";
+      var htmlNuevoUsuario = "<h1>" + usuarioCreado.nombres + "</h1>"
+      nuevoUsuarioNodo.innerHTML = htmlNuevoUsuario
+      var contenedor = document.getElementById("contenedor")
+      contenedor.appendChild(nuevoUsuarioNodo);
+    } else {
+    }
+  }
+</script>

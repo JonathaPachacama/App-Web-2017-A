@@ -13,7 +13,6 @@ module.export={
     },
     password:{
       type:"string",
-      required:true
     },
     correo:{
       type:"email"
